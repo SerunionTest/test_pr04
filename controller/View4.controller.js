@@ -5,7 +5,7 @@ var expandedNodes = [];
 var gvBindingObject;
 var BapiErrors,
 	executePress;
-
+ 
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/Device",
