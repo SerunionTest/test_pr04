@@ -1,0 +1,58 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZPPG_PR01_04_SRV" xml:lang="es" sap:schema-version="1">
+			<EntityType Name="ZPPH_PR01_04_WERKS" sap:content-version="1">
+				<Key><PropertyRef Name="Mandt"/><PropertyRef Name="Werks"/></Key><Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Mandante" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Nombre 1" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZXXS_PR01_MATERIAL_LIST" sap:content-version="1">
+				<Key><PropertyRef Name="Aufnr"/><PropertyRef Name="Matnr"/></Key><Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Orden" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Bdmng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Ctd.necesaria" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Meinh" Type="Edm.String" MaxLength="3" sap:label="Campo con longitud de 3 byte" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/><Property Name="Maktx" Type="Edm.String" MaxLength="40" sap:label="Denominación" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false"/></EntityType>
+			<EntityType Name="ZPPH_PR01_04_MSEHI" sap:content-version="1">
+				<Key><PropertyRef Name="Mandt"/><PropertyRef Name="Spras"/><PropertyRef Name="Msehi"/></Key><Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Mandante" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Spras" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Idioma" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Un.medida int." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="Msehl" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Ud.medida txt.1" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="AbatimientoInfo" sap:content-version="1">
+				<Key><PropertyRef Name="NodeId"/></Key><Property Name="NodeId" Type="Edm.Int32" Nullable="false" sap:label="Id node" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Order" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Orden" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="ParentNodeId" Type="Edm.Int32" sap:label="Par. Id." sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="HierarchyLevel" Type="Edm.Int32" Nullable="false" sap:label="Hier. lev." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="DrillState" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Drill State" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MatDescription" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Denominación" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="STATUS" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="UOM" sap:label="Cantidad"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="UOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/><Property Name="AbatInitDate" Type="Edm.DateTime" Precision="7" sap:label="Fecha Ini.Abat." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AbatInitTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Hora Ini.Abat." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CarroNumber" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Nº Carro" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AbatNumber" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Nº Abatidor" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="AbatEndDate" Type="Edm.DateTime" Precision="7" sap:label="Fecha Fin Abat." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="AbatEndTime" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Hora Fin Abat." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="EndPackTemp" Type="Edm.String" Nullable="false" MaxLength="6" sap:label="Temp. Fin. Env." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Centro" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Gstrs" Type="Edm.DateTime" Precision="7" sap:label="Inicio program." sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Vlsch" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Clave modelo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Ltxa1" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Texto notific." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Usuario" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ZPPH_PR01_04_VLSCH" sap:content-version="1">
+				<Key><PropertyRef Name="Vlsch"/></Key><Property Name="Vlsch" Type="Edm.String" Nullable="false" MaxLength="7" sap:label="Clave modelo" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="Txt" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Texto breve" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZPPG_PR01_04_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="ZPPH_PR01_04_WERKSSet" EntityType="ZPPG_PR01_04_SRV.ZPPH_PR01_04_WERKS" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZXXS_PR01_MATERIAL_LISTSet" EntityType="ZPPG_PR01_04_SRV.ZXXS_PR01_MATERIAL_LIST" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZPPH_PR01_04_MSEHISet" EntityType="ZPPG_PR01_04_SRV.ZPPH_PR01_04_MSEHI" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="AbatimientoInfoSet" EntityType="ZPPG_PR01_04_SRV.AbatimientoInfo" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="ZPPH_PR01_04_VLSCHSet" EntityType="ZPPG_PR01_04_SRV.ZPPH_PR01_04_VLSCH" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZPPG_PR01_04_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZPPG_PR01_04_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

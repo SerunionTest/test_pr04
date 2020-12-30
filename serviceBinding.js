@@ -1,0 +1,1 @@
+function initModel(){var a="/sap/opu/odata/sap/ZPPG_PR01_04_SRV/";var e=new sap.ui.model.odata.ODataModel(a,true);sap.ui.getCore().setModel(e)}

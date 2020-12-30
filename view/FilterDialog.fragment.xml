@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleFilterDialogConfirm">
+		<customTabs>
+			<ViewSettingsCustomTab id="filterSettings" icon="sap-icon://action-settings" title="Configurar filtros" tooltip="Configurar Filtros">
+				<content>
+					<Panel>
+						<content>
+							<Label text="Material:" design="Bold" labelFor="inputmaterial"/>
+							<Input width="100%" id="inputmaterial"/>
+
+							<Label text="Control:" design="Bold" width="100%" labelFor="inputcontrol"/>
+							<MultiComboBox id="inputcontrol"
+								placeholder="Considerar todos">
+								<items>
+								<core:Item  text="Pendiente"
+									key="Status0"/>	
+								<core:Item  text="En Proceso"
+									key="Status1"/>
+								<core:Item  text="Finalizado"
+									key="Status2"/>
+								</items>
+							</MultiComboBox>
+							
+							<Label text="Descripción:" design="Bold" width="100%" labelFor="inputdescription"/>
+							<Input width="100%" id="inputdescription"/>
+					
+							<FlexBox><Label></Label></FlexBox>
+
+							<Button type="Reject" tooltip="Borrar Filtro" icon="sap-icon://clear-filter" text="Borrar filtros" press="handleClearFilterPressed"/>
+						</content>
+					</Panel>
+				</content>
+			</ViewSettingsCustomTab>
+		</customTabs>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

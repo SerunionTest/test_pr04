@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="handleCommentDialogConfirm">
+		<!--		<filterItems>
+			<ViewSettingsCustomItem
+				id="idCustomFilterItem"
+				text="Material"
+				key="MaterialMeasure">
+				<customControl>
+					<Input width="100%" id="inputmaterial"/>
+				</customControl>
+			</ViewSettingsCustomItem>
+		</filterItems>-->
+		<customTabs>
+			<ViewSettingsCustomTab id="filterSettings" icon="sap-icon://action-settings" title="Orden y descripción del material"
+				tooltip="Orden y descripción del material">
+				<content>
+					<Panel>
+						<content>
+							<Label text="Tipología:" design="Bold" width="100%" labelFor="inputumedida"/>
+							<!--<Input width="50%" id="inputumedida"/>-->
+							<ComboBox id="inputVlsch" showSecondaryValues="true" items="{ path: '/ZPPH_PR01_04_VLSCHSet' }">
+								<core:ListItem key="{Vlsch}" text="{Txt}" additionalText="{Vlsch}"/>
+							</ComboBox>
+							<Label text="Comentario:" design="Bold" width="100%" labelFor="inputLocation"/>
+							<TextArea id="textAreaForComment" value="" showExceededText="true" maxLength="33" width="100%" liveChange="handleLiveChange"
+								valueState="None" valueLiveUpdate="true"/>
+							<FlexBox>
+								<Label></Label>
+							</FlexBox>
+						</content>
+					</Panel>
+				</content>
+			</ViewSettingsCustomTab>
+		</customTabs>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

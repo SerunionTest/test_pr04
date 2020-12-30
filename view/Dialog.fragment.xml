@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Centros"
+		class="sapUiPopupWithPadding"
+		items="{/ZPPH_PR01_04_WERKSSet}"
+		search="_handleValueHelpSearch"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		<StandardListItem
+			title="{Werks}"
+			description="{Name1}" />
+	</SelectDialog>
+</core:FragmentDefinition>

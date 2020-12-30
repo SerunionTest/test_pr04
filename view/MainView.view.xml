@@ -1,0 +1,140 @@
+<mvc:View controllerName="pr0104.pr0104.controller.MainView" xmlns:mvc="sap.ui.core.mvc" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:m="sap.m" displayBlock="true" xmlns="sap.ui.table">
+	<m:Shell id="shell">
+		<m:App id="app">
+			<m:pages>
+				<m:Page id="page" title="{i18n>title}">
+					<m:content>
+						<l:VerticalLayout width="100%">
+							<fb:FilterBar id="filterBar" header="Filtros:" reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+								<fb:filterGroupItems>
+									<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="Centro" mandatory="false" partOfCurrentVariant="true" visibleInFilterBar="true">
+										<fb:control>
+											<m:Input type="Text" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelp" id="input_werks" required="false"/>
+										</fb:control>
+									</fb:FilterGroupItem>
+									<fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="Fecha" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+										<fb:control>
+											<m:DatePicker id="filterDatePicker" value=" " required="true"/>
+										</fb:control>
+									</fb:FilterGroupItem>
+								</fb:filterGroupItems>
+							</fb:FilterBar>
+						</l:VerticalLayout>
+						<TreeTable id="TreeTable" rows="{path:'nodeModel>/nodeRoot', parameters: {arrayNames:['children']}}" 
+						enableSelectAll="false" alternateRowColors="true" enableCellFilter="true" 
+						filter="filters" selectionMode="MultiToggle" toggleOpenState="OpenStatePress">
+							<extension>
+								<m:OverflowToolbar design="Transparent">
+									<!--<m:Button id="CopyButton" icon="sap-icon://copy" press="onCopy"/>-->
+									<m:ToolbarSpacer/>
+									<m:Button id="CopyButton" icon="sap-icon://copy" press="onCopy"/>
+									<!--<m:Button tooltip="Ordenar" icon="sap-icon://sort" press="handleSortButtonPressed"/>-->
+									<!--<m:Button tooltip="Filtrar" icon="sap-icon://filter" press="handleFilterButtonPressed"/>-->
+								</m:OverflowToolbar>
+							</extension>						
+							<columns>
+								<Column label="Nº Orden" width="8%" filterProperty="Orden">
+									<template>
+										<m:HBox alignItems="Center">
+										<!--Determine the color and the text value dynamically-->
+										<core:Icon src="sap-icon://status-inactive" id="Statusicon" color="{= ${nodeModel>status} === '0' ?  '#FF0000' :  ${nodeModel>status} === '1' ? '#FFFF00' :  '#00FF00'}"/>
+										<m:Text text="{nodeModel>orden}" wrapping="true" visible="{= ${nodeModel>parentnode} === 0}"/>
+										<m:Button text="{nodeModel>orden}" type="Transparent" press="onOrdenPress" visible="{= ${nodeModel>parentnode} !== 0}"/>
+										</m:HBox>
+									</template>
+								</Column>
+								<Column label="Material" width="8%" filterProperty="Plnbez">
+									<template>
+										<m:Text text="{nodeModel>material}" wrapping="false"/>
+									</template>
+								</Column>
+								<Column label="Descripción" width="12%" filterProperty="Maktx">
+									<template>
+										<m:Text text="{nodeModel>description}" wrapping="true"/>
+									</template>
+								</Column>
+								<Column label="Ctd." width="5%">
+									<template>
+										<m:Text text="{nodeModel>quantity}" wrapping="false"/>
+									</template>
+								</Column>
+								<Column label="UM" width="5%">
+									<template>
+										<m:Text text="{nodeModel>um}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>
+									</template>
+								</Column>
+								<Column label="Fecha Ini.Abat." hAlign="Center">
+									<template>
+										<m:Text text="{path: 'nodeModel>fechaini', type: 'sap.ui.model.odata.type.Date', formatOptions: { pattern : 'dd.MM.yyyy' }}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>
+									</template>
+								</Column>								
+								<Column label="Hora Ini.Abat." hAlign="Center">
+									<template>
+										<m:Text text="{path: 'nodeModel>horaini', type: 'sap.ui.model.odata.type.Date', formatOptions: { pattern : 'HH:mm:ss' }}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>
+									</template>
+								</Column>
+								<Column label="Nº Carro" hAlign="Center">
+									<template>
+										<m:Text text="{nodeModel>numCarro}" wrapping="false"/>
+									</template>
+								</Column>			
+								<Column label="NºAbat." hAlign="Center">
+									<template>
+										<m:Text text="{nodeModel>numAbat}" wrapping="false"/>
+									</template>
+								</Column>			
+								<Column label="Fecha Fin.Abat." hAlign="Center">
+									<template>
+										<m:Text text="{path: 'nodeModel>fechafin', type: 'sap.ui.model.odata.type.Date', formatOptions: { pattern : 'dd.MM.yyyy' }}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>
+									</template>
+								</Column>								
+								<Column label="Hora Fin.Abat." width="auto" hAlign="Center">
+									<template>
+										<m:HBox alignContent="Center" alignItems="Center">
+										<m:Button icon="sap-icon://media-play" width="auto" id="buttonplay2" press="onPlayPress" visible="{= ${nodeModel>parentnode} !== 0 ? ( ${nodeModel>horafin} === null ? true : false ) : false }"/>
+										<!--<m:Text text="{nodeModel>horafin}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>-->
+											<m:TimePicker id="TP1" displayFormat="short" change="onInputChange" support2400="true"
+												value="{path: 'nodeModel>horafin', type: 'sap.ui.model.odata.type.Time'}" visible="{= ${nodeModel>parentnode} !== 0 ? ( ${nodeModel>horafin} === null ? false : true) : false}"/>										
+<!--										<m:Text text="{path: 'nodeModel>horafin', type: 'sap.ui.model.odata.type.Time', formatOptions: { pattern : 'HH:mm:ss' }}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>-->
+										</m:HBox>
+									</template>
+								</Column>
+								<Column label="Temp. Fin.Abat" width="auto" hAlign="Center">
+									<template>
+										<!--<m:HBox>-->
+										<!--<m:Button icon="sap-icon://media-play" width="auto" id="buttonplay3" press="onPlayPress" visible="{= ${nodeModel>parentnode} !== 0 ? ( ${nodeModel>tempfin} === null ? true : false ) : false }"/>-->
+										<!--<m:Text text="" wrapping="false" id="labelplay3" visible ="false"/>-->
+										<!--<m:Text text="{nodeModel>tempfin}" wrapping="false" visible="{= ${nodeModel>parentnode} !== 0}"/>-->
+										<!--</m:HBox>-->
+										<m:Input type="Number" value="{nodeModel>tempfin}" change="onInputChange" width="auto" visible="{= ${nodeModel>parentnode} !== 0}"/>
+									</template>
+								</Column>
+								<Column label="Comentarios" width="auto" hAlign="Center">
+									<template>
+										<!--<m:Text text="" wrapping="false"/>-->
+										<m:Button icon="sap-icon://notification-2" tooltip="Añadir comentario" width="100%" id="buttoncomment" press="onCommentPress" visible="{= ${nodeModel>parentnode} !== 0 }"/>
+									</template>
+								</Column>
+							</columns>
+						</TreeTable>
+					</m:content>
+					<m:footer>
+						<m:OverflowToolbar id="otbFooter">
+							<m:ToolbarSpacer/>
+							<m:Button type="Emphasized" text="Cancelar" press="handleWarning2MessageBoxPress">
+								<m:layoutData><m:OverflowToolbarLayoutData priority="NeverOverflow"/></m:layoutData>
+							</m:Button>
+							<m:Button type="Emphasized" text="Un. Medida" press="onMedida">
+								<m:layoutData><m:OverflowToolbarLayoutData priority="NeverOverflow"/></m:layoutData>
+							</m:Button>
+							<m:Button type="Emphasized" text="Ejecutar" press="onEjecutar">
+								<m:layoutData><m:OverflowToolbarLayoutData priority="NeverOverflow"/></m:layoutData>
+							</m:Button>
+						</m:OverflowToolbar>
+					</m:footer>
+				</m:Page>
+			</m:pages>
+		</m:App>
+	</m:Shell>
+</mvc:View>
